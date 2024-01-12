@@ -1,6 +1,6 @@
 ---
 - name: IOS Config Demo
-  hosts: routers_ssh_pass
+  hosts: routers
 
   tasks:
     - name: Config mode command
