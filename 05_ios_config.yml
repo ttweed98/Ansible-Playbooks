@@ -6,7 +6,7 @@
 
   tasks:
     - name: Task 1
-      cisco.ios.ios_config:
+      ios_config:
         lines:
           - "ip domain name test.com"
     
