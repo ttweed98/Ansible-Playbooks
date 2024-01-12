@@ -1,33 +1,31 @@
 ---
-
-- name: "IOS Config Demo"
+- name: IOS Config Demo
   hosts: routers
   gather_facts: false
   connection: network_cli
 
   tasks:
-    - name: 01 - "Configure interface settings"
+    - name "01 - Config mode command"
       cisco.ios.ios_config:
         lines:
           - ip domain name test.com
-
-    - name: 02 - "Configure interface with IP"
+    
+    - name: "02 - Configure Interface with IP"
       cisco.ios.ios_config:
         lines:
-          - ip address 2.2.2.2 255.255.255.0
           - description ansible_configured
+          - ip address 2.2.2.2 255.255.255.0
         parents: interface GigabitEthernet0/1
         diff_against: startup
         save_when: modified
-
-    - name: 03 - "Configure Multiple interfaces"
+    
+    - name: "03 - Configure Multiple Interfaces"
       cisco.ios.ios_config:
-        parents: "{{ item }}"
         lines:
           - description backup_int
-        after:
+        parents: "{{ item }}"
+        after: 
           - no shutdown
-        save_when: modified
       with_items:
         - interface GigabitEthernet0/2
-        - interface GigabitEthernet0/3
+        - nterface GigabitEthernet0/3
