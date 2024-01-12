@@ -1,16 +1,16 @@
 ---
-- name: IOS Config Demo
+- name: Play 1 - "IOS Config Demo"
   hosts: routers
   gather_facts: false
   connection: network_cli
 
   tasks:
-    - name: "01 - Config mode command"
+    - name: Task 1 - "Config mode command"
       cisco.ios.ios_config:
         lines:
           - ip domain name test.com
     
-    - name: "02 - Configure Interface with IP"
+    - name: Task 2 - "Configure Interface with IP"
       cisco.ios.ios_config:
         lines:
           - description ansible_configured
@@ -19,7 +19,7 @@
         diff_against: startup
         save_when: modified
     
-    - name: "03 - Configure Multiple Interfaces"
+    - name: Task 3 - "Configure Multiple Interfaces"
       cisco.ios.ios_config:
         lines:
           - description backup_int
