@@ -5,7 +5,7 @@
   connection: network_cli
 
   tasks:
-    - name "01 - Config mode command"
+    - name: "01 - Config mode command"
       cisco.ios.ios_config:
         lines:
           - ip domain name test.com
