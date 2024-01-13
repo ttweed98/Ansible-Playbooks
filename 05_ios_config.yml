@@ -6,26 +6,26 @@
 
   tasks:
     - name: Task 1
-      ios_config:
+      cisco.ios.ios_config:
         lines:
           - "ip domain name test.com"
     
-    # - name: Task 2 - "Configure Interface with IP"
-    #   cisco.ios.ios_config:
-    #     lines:
-    #       - description ansible_configured
-    #       - ip address 2.2.2.2 255.255.255.0
-    #     parents: interface GigabitEthernet0/1
-    #     diff_against: startup
-    #     save_when: modified
+    - name: Task 2 - "Configure Interface with IP"
+      cisco.ios.ios_config:
+        lines:
+          - description ansible_configured
+          - ip address 2.2.2.2 255.255.255.0
+        parents: interface GigabitEthernet0/1
+        diff_against: startup
+        save_when: modified
     
-    # - name: Task 3 - "Configure Multiple Interfaces"
-    #   cisco.ios.ios_config:
-    #     lines:
-    #       - description backup_int
-    #     parents: "{{ item }}"
-    #     after: 
-    #       - no shutdown
-    #   with_items:
-    #     - interface GigabitEthernet0/2
-    #     - nterface GigabitEthernet0/3
+    - name: Task 3 - "Configure Multiple Interfaces"
+      cisco.ios.ios_config:
+        lines:
+          - description backup_int
+        parents: "{{ item }}"
+        after: 
+          - no shutdown
+      with_items:
+        - interface GigabitEthernet0/2
+        - nterface GigabitEthernet0/3
